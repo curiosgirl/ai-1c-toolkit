@@ -1,0 +1,55 @@
+# Локальные параметры разработчика и секреты
+workflow/local.md
+*.local.md
+*.local
+.env
+.dev.env
+*.env
+*.credentials
+
+# Конфигурации и рабочие каталоги ИИ-агентов и харнессов
+.cursor/*
+!.cursor/rules/
+.claude/
+.mcp.json
+
+# IDE и среды разработки
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.metadata/
+
+# Сборка, дистрибутивы и временные каталоги
+build/
+out/
+target/
+bin/
+temp/
+tmp/
+
+# Статический анализ и синтакс-контроль 1С
+.scannerwork/
+.sonar/
+tools/syntax-check/exceptionFile.txt
+
+# Отчеты и результаты выполнения автотестов
+tests/json/
+allure-results/
+junit-report/
+
+# EDT / 1С исходники родительских конфигураций поставщика
+**/ParentConfigurations*/
+**/ParentConfigurations/**
+
+# Файлы операционной системы
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+__pycache__/
+*.py[cod]
+*$py.class
+

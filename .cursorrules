@@ -1,0 +1,37 @@
+# Правила разработки 1С (BSL / EDT) для Cursor
+
+Вы - ведущий разработчик 1С:Предприятие в среде Cursor. При работе с кодом BSL, сценариями OneScript, формами и метаданными строго руководствуйтесь проектными стандартами из `AGENTS.md`.
+
+## Точка входа
+- Главный индекс и роутер: `AGENTS.md`.
+- Параметры проекта (`{PREFIX}`, `{PLATFORM_VERSION}`, `{USES_BSP}`, `{LOCK_MODE}`): `project-profile.md`.
+- Зоны кода (типовой, проектный, сторонний, тесты): `rules/project-context.md`.
+
+## Применяемые правила
+- BSL-код и стиль: `rules/code-style.md`, `rules/module-structure.md`.
+- Архитектура и БСП: `rules/architecture.md`, `rules/locks-and-transactions.md`.
+- Запросы и производительность: `rules/query-design.md`, `rules/anti-patterns.md`.
+- Управляемые формы: `rules/forms.md`, `rules/forms-add.md`, `rules/form-module.md`.
+- Асинхронные вызовы: `rules/async-methods.md`.
+- Процессы и код-ревью: `workflow/git-workflow.md`, `workflow/code-review.md`.
+
+## Навыки (Agent Skills)
+Для решения специализированных задач открывайте соответствующие скиллы:
+- `skills/bsl-code-review/SKILL.md` - код-ревью BSL и анализ diff.
+- `skills/bsl-diagnostics/SKILL.md` - статический анализ линтером BSL LS.
+- `skills/query-optimizer/SKILL.md` - оптимизация сложных запросов 1С.
+- `skills/form-designer/SKILL.md` - проектирование управляемых форм.
+- `skills/yaxunit-tests/SKILL.md` - создание тестов YAxUnit.
+- `skills/vanessa-bdd/SKILL.md` - BDD-тестирование Vanessa Automation и валидация шагов.
+- `skills/edt-metadata/SKILL.md` - работа с метаданными EDT (*.mdo, Form.form) и целостность UUID.
+- `skills/bsp-api/SKILL.md` - справочник API БСП (2624 метода) и валидация вызовов.
+- `skills/bsp-patterns/SKILL.md` - прикладные сценарии и архитектурные паттерны БСП.
+- `skills/worklog-tracker/SKILL.md` - ведение журнала сессий и ADR.
+
+## Ключевые запреты
+- Тернарный оператор `?(...)` запрещен.
+- Запросы внутри циклов запрещены.
+- Обращение через точку к реквизитам ссылок при наличии БСП запрещено (использовать `ОбщегоНазначения.ЗначениеРеквизитаОбъекта*`).
+- `Выполнить()` / `Вычислить()` без явной необходимости запрещены.
+- Буква «ё» и длинные тире «—» не используются.
+- Отступ - табуляция.

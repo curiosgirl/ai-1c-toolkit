@@ -1,0 +1,18 @@
+{
+  "$schema": "https://1c-syntax.github.io/bsl-language-server/configuration/schema.json",
+  "language": "ru",
+  "diagnostics": {
+    "computeTrigger": "onSave",
+    "subsystemsFilter": {
+      "include": [],
+      "exclude": [
+        "ЮТПубличный",
+        "ЮТПодключаемыеМодули",
+        "ЮТКодогенерация",
+        "ЮТДвижок",
+        "уатУправлениеАвтотранспортом",
+        "уатСлужебныеОбъекты"
+      ]
+    }
+  }
+}

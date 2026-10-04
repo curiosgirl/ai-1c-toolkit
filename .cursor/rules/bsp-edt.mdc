@@ -1,0 +1,33 @@
+---
+description: Стандарты разработки 1С:Предприятие (BSL, EDT, БСП)
+globs: "**/*.bsl,**/*.os,**/*.mdo,**/*.xml"
+alwaysApply: false
+---
+
+# Стандарты разработки 1С:Предприятие (BSL, EDT, БСП)
+
+При работе с файлами BSL (`*.bsl`), OneScript (`*.os`), метаданными (`*.mdo`) и управляемыми формами (`*.xml`) руководствоваться правилами пакета.
+
+## Навигация по стандартам
+- Главный маршрутизатор: `AGENTS.md`
+- Параметры конфигурации: `project-profile.md`
+- Карта зон кода: `rules/project-context.md`
+
+## Специализированные навыки (Agent Skills)
+- Ревью BSL и diff: `skills/bsl-code-review/SKILL.md`
+- Статический анализ: `skills/bsl-diagnostics/SKILL.md`
+- Запросы и tempdb: `skills/query-optimizer/SKILL.md`
+- Управляемые формы: `skills/form-designer/SKILL.md`
+- Тесты YAxUnit: `skills/yaxunit-tests/SKILL.md`
+- Сценарии Vanessa BDD: `skills/vanessa-bdd/SKILL.md`
+- Метаданные EDT (*.mdo, UUID): `skills/edt-metadata/SKILL.md`
+- Справочник API БСП: `skills/bsp-api/SKILL.md`
+- Прикладные сценарии БСП: `skills/bsp-patterns/SKILL.md`
+- Документирование и ADR: `skills/worklog-tracker/SKILL.md`
+
+## Критические ограничения BSL
+1. **Запросы в циклах:** категорически запрещены.
+2. **Обращение через точку:** при `{USES_BSP} = Да` получать реквизиты ссылок строго через `ОбщегоНазначения.ЗначениеРеквизитаОбъекта*`.
+3. **Блокировки данных:** при `{LOCK_MODE} = Managed` устанавливать явную `БлокировкаДанных` перед чтением/записью в транзакции.
+4. **Виртуальные таблицы:** параметры отбора задавать в параметрах таблицы, а не в `ГДЕ`.
+5. **Синтаксис:** без тернарного `?(...)`, сравнения с `Истина`/`Ложь`, Yoda-синтаксиса, буквы «ё». Отступ - табуляция.
