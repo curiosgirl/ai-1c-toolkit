@@ -1,5 +1,6 @@
 # Локальные параметры разработчика и секреты
 workflow/local.md
+docs/notes/analyse/
 *.local.md
 *.local
 .env
