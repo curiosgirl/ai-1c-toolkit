@@ -37,7 +37,7 @@
 | Ветки, Merge Request / Pull Request, запреты на push | `workflow/git-workflow.md` | - |
 | Код-ревью Merge Request / Pull Request, анализ diff | `workflow/code-review.md` | `skills/bsl-code-review/SKILL.md` |
 | Диагностика BSL Language Server, линтинг и синтакс-контроль | `workflow/bsl-mcp.md` | `skills/bsl-diagnostics/SKILL.md` |
-| Заметки по задаче, сквозной журнал работы (worklog), ADR | `workflow/notes-artifacts.md` | `skills/worklog-tracker/SKILL.md` |
+| Спецификация задачи (SDD), сквозной журнал работы (worklog), ADR | `workflow/notes-artifacts.md`, шаблон `skills/worklog-tracker/templates/spec.md` | `skills/worklog-tracker/SKILL.md` |
 
 ## Переносимые навыки агентов (Agent Skills)
 
@@ -54,7 +54,7 @@
 | `edt-metadata` | `skills/edt-metadata/SKILL.md` | Создание и правка метаданных EDT (*.mdo, Form.form), проверка дубликатов UUID (check_uuid_duplicates.py) |
 | `bsp-api` | `skills/bsp-api/SKILL.md` | Справочник API БСП (2624 метода, 284 модуля), проверка вызовов bsp-api.py до написания кода |
 | `bsp-patterns` | `skills/bsp-patterns/SKILL.md` | Прикладные сценарии БСП (38 тем, регламентные задания, длительные операции, печать, права) |
-| `worklog-tracker` | `skills/worklog-tracker/SKILL.md` | Создание анализа задачи, фиксация рабочего времени (worklog) и архитектурных решений (ADR) |
+| `worklog-tracker` | `skills/worklog-tracker/SKILL.md` | Создание спецификации задачи по SDD, фиксация рабочего времени (worklog) и архитектурных решений (ADR) |
 
 ## Самое частое, что нарушают
 
