@@ -2,6 +2,11 @@
 Скрипт индексации документации платформы 1С:Предприятие из файлов HBK.
 Распаковывает статьи из shcntx_ru.hbk, shquery_ru.hbk, shlang_ru.hbk, mngdsgn_ru.hbk
 и сохраняет их в базу SQLite с поддержкой полнотекстового поиска FTS5.
+
+Использование:
+    python indexer.py [<каталог bin платформы>]
+
+Без аргумента берется каталог bin самой новой платформы из стандартных каталогов установки.
 """
 
 import sys
@@ -338,10 +343,48 @@ def build_database(bin_dir: str, db_path: str):
     print(f"Всего статей в базе: {total_articles}")
     print(f"Размер базы данных: {db_size_mb:.2f} МБ")
 
+PLATFORM_ROOTS = [
+    r"C:\Program Files\1cv8",
+    r"C:\Program Files (x86)\1cv8",
+    "/opt/1cv8/x86_64",
+    "/opt/1cv8/i386",
+]
+
+
+def find_latest_platform_bin() -> str | None:
+    """Возвращает каталог самой новой установленной платформы, в котором есть справка."""
+    candidates = []
+    for root in PLATFORM_ROOTS:
+        if not os.path.isdir(root):
+            continue
+        for name in os.listdir(root):
+            if not re.fullmatch(r"\d+(\.\d+)+", name):
+                continue
+            version = tuple(int(part) for part in name.split("."))
+            # В Windows справка лежит в <версия>\bin, в Linux - прямо в каталоге версии.
+            for bin_dir in (os.path.join(root, name, "bin"), os.path.join(root, name)):
+                if os.path.exists(os.path.join(bin_dir, "shcntx_ru.hbk")):
+                    candidates.append((version, bin_dir))
+                    break
+    if not candidates:
+        return None
+    return max(candidates)[1]
+
+
 if __name__ == "__main__":
-    default_bin = r"C:\Program Files\1cv8\8.5.4.1878\bin"
-    target_bin = sys.argv[1] if len(sys.argv) > 1 else default_bin
-    
+    # Вывод содержит кириллицу. Без явного переключения консоль не в UTF-8 показывает кракозябры.
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+    if len(sys.argv) > 1:
+        target_bin = sys.argv[1]
+    else:
+        target_bin = find_latest_platform_bin()
+        if not target_bin:
+            print("Не найдена установленная платформа 1С со справкой (shcntx_ru.hbk).")
+            print("Укажите каталог bin явно: python indexer.py <каталог bin платформы>")
+            sys.exit(2)
+        print(f"Каталог платформы не указан, выбран самый новый: {target_bin}")
+
     script_dir = os.path.dirname(os.path.abspath(__file__))
     target_db = os.path.join(script_dir, "v8_platform_docs.db")
 

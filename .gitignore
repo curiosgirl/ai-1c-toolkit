@@ -35,6 +35,9 @@ tmp/
 .sonar/
 tools/syntax-check/exceptionFile.txt
 
+# Локальный индекс документации платформы (собирается indexer.py, зависит от установленной версии)
+tools/v8-platform-docs/*.db*
+
 # Отчеты и результаты выполнения автотестов
 tests/json/
 allure-results/
@@ -49,8 +52,6 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 *.tmp
-*.db
-tools/v8-platform-docs/*.db
 __pycache__/
 *.py[cod]
 *$py.class

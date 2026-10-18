@@ -59,7 +59,7 @@
 |---|---|---|---|
 | `bsl-diagnostics` | Статический анализ BSL/OS, синтакс-контроль | `user-bsl-mcp` (инструмент `analyze_file`), CLI `bsl-language-server`, `platform-check` (синтакс-контроль 1С) или `none` | `user-bsl-mcp` |
 | `metadata-provider` | Чтение структуры метаданных конфигурации и типов | `edt-files` (прямое чтение `*.mdo` по `{EDT_PROJECT_FORMAT}`), специализированный MCP-сервер метаданных | `edt-files` |
-| `platform-docs` | Поиск по синтакс-помощнику платформы 1С и документации БСП | `builtin` (базовые знания агента и правила `rules/`), MCP-сервер документации 1С | `builtin` |
+| `platform-docs` | Поиск по синтакс-помощнику платформы 1С | `v8-platform-docs` (MCP-сервер пакета, `tools/v8-platform-docs/README.md`), `builtin` (базовые знания агента и правила `rules/`) | `builtin` |
 | `git-host` | Операции с MR/PR: diff, список файлов, публикация заметок ревью | `user-gitlab` (GitLab MCP), `gh` (GitHub CLI / MCP), `local-git` (консольный git diff без хостинга) | `user-gitlab` |
 | `task-tracker` | Получение требований, критериев приемки и комментариев к задаче | `user-jira` (Jira MCP), `youtrack-mcp`, `kaiten-mcp`, `github-issues`, `manual` (из текста запроса) | `user-jira` |
 
