@@ -109,5 +109,5 @@
 ## Проверка перед использованием
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py check УдалениеПомеченныхОбъектов.УдалитьПомеченныеОбъекты
+python skills/bsp-api/scripts/bsp-api.py check УдалениеПомеченныхОбъектов.УдалитьПомеченныеОбъекты
 ```

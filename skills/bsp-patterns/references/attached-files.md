@@ -176,5 +176,5 @@
 ## Проверка перед использованием
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py check РаботаСФайлами.ДвоичныеДанныеФайла
+python skills/bsp-api/scripts/bsp-api.py check РаботаСФайлами.ДвоичныеДанныеФайла
 ```

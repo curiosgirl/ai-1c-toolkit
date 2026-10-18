@@ -179,5 +179,5 @@
 ## Проверка перед использованием
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py check УправлениеДоступом.ЕстьПраво
+python skills/bsp-api/scripts/bsp-api.py check УправлениеДоступом.ЕстьПраво
 ```

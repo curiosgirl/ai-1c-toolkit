@@ -166,5 +166,5 @@
 ## Проверка перед использованием
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py check Пользователи.ТекущийПользователь
+python skills/bsp-api/scripts/bsp-api.py check Пользователи.ТекущийПользователь
 ```

@@ -164,5 +164,5 @@
 ## Проверка перед использованием
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py check ОбновлениеИнформационнойБазы.ВерсияИБ
+python skills/bsp-api/scripts/bsp-api.py check ОбновлениеИнформационнойБазы.ВерсияИБ
 ```

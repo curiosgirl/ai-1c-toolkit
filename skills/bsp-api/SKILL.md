@@ -132,12 +132,12 @@ python $B stats                            # что вообще в справо
 
 ```bash
 python -m v8unpack -E 1Cv8.cf E:\bsp\3_2_1 --temp E:\bsp\_tmp     # распаковать дистрибутив
-python skills/1c-bsp-api/scripts/bsp-build.py \
+python skills/bsp-api/scripts/bsp-build.py \
     --docs "3.1.11=E:\scrape\bsp3111doc" --docs "3.2.1=E:\scrape\bsp321doc" \
     --lib "3.1.11=E:\bsp\3_1_11" --lib "3.2.1=E:\bsp\3_2_1" \
-    --purposes skills/1c-bsp-api/references/purposes.json \
-    --out skills/1c-bsp-api/references/bsp-api.jsonl \
-    --map skills/1c-bsp-api/references/subsystem-map.md
+    --purposes skills/bsp-api/references/purposes.json \
+    --out skills/bsp-api/references/bsp-api.jsonl \
+    --map skills/bsp-api/references/subsystem-map.md
 ```
 
 Формулировки назначения ведутся отдельно, в `references/purposes.json`: раздел `modules` и раздел

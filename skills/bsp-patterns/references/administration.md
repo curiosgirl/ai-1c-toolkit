@@ -110,5 +110,5 @@
 Имена здесь расходятся с названиями подсистем, поэтому проверка обязательна:
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py module СоединенияИБ
+python skills/bsp-api/scripts/bsp-api.py module СоединенияИБ
 ```
