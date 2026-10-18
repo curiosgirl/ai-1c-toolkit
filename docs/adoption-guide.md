@@ -21,11 +21,14 @@ your-project-root/
 ├── CLAUDE.md
 ├── .cursorrules
 ├── .cursor/rules/bsp-edt.mdc
+├── .cursor/agents/
+├── .claude/agents/
 ├── .github/copilot-instructions.md
 ├── project-profile.md
 ├── project-profile.example.md
 ├── docs/
 │   └── adoption-guide.md
+├── agents/
 ├── rules/
 ├── skills/
 ├── workflow/
@@ -154,10 +157,12 @@ flowchart TD
 workflow/local.md
 *.local.md
 
-# Локальные каталоги агентов и IDE
+# Локальные каталоги агентов и IDE (правила и субагенты пакета коммитятся)
 .cursor/*
 !.cursor/rules/
-.claude/
+!.cursor/agents/
+.claude/*
+!.claude/agents/
 .mcp.json
 
 # Исходники родительской конфигурации поставщика EDT
