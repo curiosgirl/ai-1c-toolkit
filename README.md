@@ -82,6 +82,7 @@ flowchart TD
 | **Локальные настройки** | `workflow/local.example.md` | Шаблон персонального конфига разработчика (worktree для ревью, хранилище заметок, роли MCP) |
 | **Адаптеры харнессов** | `CLAUDE.md`, `.cursorrules`, `.cursor/rules/`, `.github/copilot-instructions.md` | Нативные файлы конфигурации для мгновенного подхвата правил различными агентами |
 | **Конфиг линтера** | `.bsl-language-server.json` | Параметры статического анализа BSL Language Server с фильтрами исключений |
+| **Инструменты** | `tools/v8-platform-docs/` | MCP-сервер справки платформы 1С (роль `platform-docs`): индексатор Синтакс-Помощника установленной платформы в локальную базу SQLite и поиск по ней |
 
 ---
 
@@ -168,7 +169,7 @@ your-project-root/
 |---|---|---|---|
 | `bsl-diagnostics` | BSL LS `analyze_file` | Статический анализ BSL / OneScript | Запуск BSL LS через CLI (`bsl-language-server analyze`) или ручной аудит по `rules/coding-standards.md` |
 | `metadata-provider` | Плагины EDT / 1C | Получение состава реквизитов и типов | Чтение дескрипторов метаданных `*.mdo` и `Configuration.mdo` из файлов проекта |
-| `platform-docs` | Справочные сервисы 1С | Синтакс-помощник и справка по платформе | Документация 1С ИТС и учет режима совместимости `{PLATFORM_VERSION}` |
+| `platform-docs` | MCP-сервер пакета `v8-platform-docs` (`tools/v8-platform-docs/`) | Синтакс-помощник и справка по платформе | Документация 1С ИТС и учет режима совместимости `{PLATFORM_VERSION}` |
 | `git-host` | GitLab / GitHub MCP | Получение diff, управление MR/PR | Консольный `git` (`git diff`, `git checkout`), вывод отчетов в Markdown |
 | `task-tracker` | Jira / YouTrack / Kaiten | Загрузка описания задачи и критериев приемки | Получение требований из текста запроса пользователя |
 
