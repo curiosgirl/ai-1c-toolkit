@@ -25,7 +25,7 @@
 | Субагент | Назначение | Опора на детерминированный инструмент |
 |---|---|---|
 | `onec-explorer` | Карта вызовов, мест использования, подписок и перехватов в расширениях | Поиск по исходникам с перечнем шаблонов |
-| `onec-reviewer` | Код-ревью diff по `workflow/code-review.md` | BSL Language Server (MCP или CLI), `git diff` |
+| `onec-reviewer` | Код-ревью diff по `workflow/code-review.md` | BSL Language Server (MCP или CLI), `git diff`, роль `platform-docs` для версий методов платформы |
 | `onec-query-auditor` | Аудит запросов по `skills/query-optimizer/SKILL.md` | Сверка имен с `*.mdo` |
 | `onec-metadata-validator` | Целостность метаданных EDT | `check_uuid_duplicates.py`, MCP `ai-edt` |
 | `onec-bsp-checker` | Проверка вызовов БСП | `bsp-api.py check` / `show` |
@@ -48,7 +48,7 @@ agents/                      # источник правды, нейтрален
 | Харнесс | Откуда загружает | Ограничение прав |
 |---|---|---|
 | Cursor | `.cursor/agents/`, а также `.claude/agents/`. При совпадении имен приоритет у `.cursor/agents/` | `readonly: true` у всех субагентов: правка файлов и команды, меняющие состояние, заблокированы средой |
-| Claude Code | `.claude/agents/` | `tools: Read, Grep, Glob, Bash` у `onec-query-auditor`, `onec-bsp-checker`, `onec-verifier`. Остальным нужны MCP-серверы (метаданные, BSL LS, `ai-edt`), поэтому список инструментов не ограничен, а запреты действуют через контракт |
+| Claude Code | `.claude/agents/` | `tools: Read, Grep, Glob, Bash` у `onec-query-auditor`, `onec-bsp-checker`, `onec-verifier`. Остальным нужны MCP-серверы (метаданные, BSL LS, справка платформы, `ai-edt`), поэтому список инструментов не ограничен, а запреты действуют через контракт |
 | Codex, Copilot, Windsurf, Cline | Нативной загрузки нет | Попросить агента выполнить роль по `agents/_contract.md` и `agents/onec-*.md` в отдельной сессии |
 
 Правило синхронизации: поле `description` в обоих адаптерах одного субагента совпадает. Харнесс выбирает субагента по описанию, поэтому расхождение приводит к тому, что в разных средах субагент вызывается в разных ситуациях.
