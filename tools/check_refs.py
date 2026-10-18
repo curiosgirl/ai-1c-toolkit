@@ -4,8 +4,8 @@
 1. Ссылки на файлы в документации существуют: имена в обратных кавычках и пути
    от каталогов пакета (skills/, rules/, workflow/, agents/, tools/, docs/) в любом месте текста,
    включая блоки кода.
-2. AGENTS.md - единственный реестр: в нем упомянут каждый навык skills/*/SKILL.md
-   и каждый субагент agents/onec-*.md.
+2. AGENTS.md - реестр для агентов: в нем упомянут каждый навык skills/*/SKILL.md
+   и каждый субагент agents/onec-*.md. README.md - витрина для людей: в нем упомянут каждый навык.
 3. У каждого субагента есть адаптеры в .cursor/agents/ и .claude/agents/ с одинаковым description.
 
 Использование (из корня репозитория):
@@ -34,7 +34,8 @@ EXTERNAL_REFS = {
     ("skills/edt-metadata/references/ai-edt-facades.md", "docs/tools/README.ru.md"),
 }
 
-REGISTRY = "AGENTS.md"
+AGENTS_REGISTRY = "AGENTS.md"
+HUMAN_CATALOG = "README.md"
 ADAPTER_DIRS = (".cursor/agents", ".claude/agents")
 
 
@@ -69,14 +70,16 @@ def check_references(files: list[str]) -> list[str]:
 
 
 def check_registry(files: list[str]) -> list[str]:
-    with open(REGISTRY, encoding="utf-8") as fh:
-        registry = fh.read()
-    problems = []
     skills = sorted(f for f in files if re.fullmatch(r"skills/[^/]+/SKILL\.md", f))
     agents = sorted(f for f in files if re.fullmatch(r"agents/onec-[^/]+\.md", f))
-    for path in skills + agents:
-        if f"`{path}`" not in registry:
-            problems.append(f"{REGISTRY}: не зарегистрирован `{path}`")
+    expected = {AGENTS_REGISTRY: skills + agents, HUMAN_CATALOG: skills}
+    problems = []
+    for registry_file, paths in expected.items():
+        with open(registry_file, encoding="utf-8") as fh:
+            registry = fh.read()
+        for path in paths:
+            if f"`{path}`" not in registry:
+                problems.append(f"{registry_file}: не зарегистрирован `{path}`")
     return problems
 
 
