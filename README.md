@@ -31,17 +31,9 @@ flowchart TD
         ContextExample[rules/project-context.example.md]
     end
 
-    subgraph SkillsLayer [Каталог переносимых навыков Agent Skills]
-        SkillReview[skills/bsl-code-review/SKILL.md]
-        SkillDiag[skills/bsl-diagnostics/SKILL.md]
-        SkillQuery[skills/query-optimizer/SKILL.md]
-        SkillForm[skills/form-designer/SKILL.md]
-        SkillTests[skills/yaxunit-tests/SKILL.md]
-        SkillVanessa[skills/vanessa-bdd/SKILL.md]
-        SkillEdtMeta[skills/edt-metadata/SKILL.md]
-        SkillBspApi[skills/bsp-api/SKILL.md]
-        SkillBspPat[skills/bsp-patterns/SKILL.md]
-        SkillWorklog[skills/worklog-tracker/SKILL.md]
+    subgraph SkillsLayer [Навыки и субагенты]
+        Skills[skills/*/SKILL.md]
+        Agents[agents/onec-*.md]
     end
 
     subgraph UserLayer [Слой разработчика и процессов]
@@ -53,7 +45,7 @@ flowchart TD
     subgraph HarnessAdapters [Адаптеры харнессов]
         AgentsRoot[AGENTS.md]
         ClaudeAdapter[CLAUDE.md]
-        CursorAdapter[.cursorrules / .cursor/rules/]
+        CursorAdapter[.cursorrules / .cursor/rules/ / .cursor/agents/]
         CopilotAdapter[.github/copilot-instructions.md]
     end
 
@@ -82,7 +74,7 @@ flowchart TD
 | **Локальные настройки** | `workflow/local.example.md` | Шаблон персонального конфига разработчика (worktree для ревью, хранилище заметок, роли MCP) |
 | **Адаптеры харнессов** | `CLAUDE.md`, `.cursorrules`, `.cursor/rules/`, `.github/copilot-instructions.md` | Нативные файлы конфигурации для мгновенного подхвата правил различными агентами |
 | **Конфиг линтера** | `.bsl-language-server.json` | Параметры статического анализа BSL Language Server с фильтрами исключений |
-| **Инструменты** | `tools/v8-platform-docs/` | MCP-сервер справки платформы 1С (роль `platform-docs`): индексатор Синтакс-Помощника установленной платформы в локальную базу SQLite и поиск по ней |
+| **Инструменты** | `tools/v8-platform-docs/`, `tools/check_refs.py` | MCP-сервер справки платформы 1С (роль `platform-docs`): индексатор Синтакс-Помощника установленной платформы в локальную базу SQLite и поиск по ней. Проверка целостности пакета: ссылки на файлы, реестр навыков и субагентов, адаптеры |
 
 ---
 
@@ -144,7 +136,7 @@ your-project-root/
 
 ## 4. Каталог навыков (Agent Skills)
 
-Все навыки спроектированы в открытом переносимом стандарте `skills/<name>/SKILL.md`:
+Все навыки спроектированы в открытом переносимом стандарте `skills/<name>/SKILL.md`. Для агентов навыки и субагенты зарегистрированы в `AGENTS.md`; `tools/check_refs.py` проверяет, что и там, и в этой таблице перечислены все навыки.
 
 | Навык | Директория | Что делает |
 |---|---|---|

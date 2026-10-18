@@ -76,5 +76,5 @@
 проверка особенно нужна:
 
 ```bash
-python skills/1c-bsp-api/scripts/bsp-api.py modules СервисКриптографииDSS
+python skills/bsp-api/scripts/bsp-api.py modules СервисКриптографииDSS
 ```

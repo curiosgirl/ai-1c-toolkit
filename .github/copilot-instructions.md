@@ -62,16 +62,6 @@
 
 ---
 
-## 3. Каталог специализированных навыков (`skills/`)
+## 3. Навыки и субагенты
 
-При решении комплексных задач сверяйтесь с инструкциями навыков:
-- Код-ревью и аудит diff: `skills/bsl-code-review/SKILL.md`
-- Запуск статического анализа: `skills/bsl-diagnostics/SKILL.md`
-- Оптимизация запросов 1С: `skills/query-optimizer/SKILL.md`
-- Управляемые формы: `skills/form-designer/SKILL.md`
-- Тесты на YAxUnit: `skills/yaxunit-tests/SKILL.md`
-- BDD-тесты Vanessa Automation: `skills/vanessa-bdd/SKILL.md`
-- Метаданные EDT и целостность MDO/UUID: `skills/edt-metadata/SKILL.md`
-- Справочник интерфейсов БСП: `skills/bsp-api/SKILL.md`
-- Прикладные механизмы БСП: `skills/bsp-patterns/SKILL.md`
-- Журнал работы и ADR: `skills/worklog-tracker/SKILL.md`
+Специализированные навыки (`skills/`) и субагенты (`agents/`) перечислены в `AGENTS.md`, в таблице маршрутизации задач и в разделе «Субагенты». При решении комплексной задачи найти там нужный навык и открыть его `SKILL.md`.
