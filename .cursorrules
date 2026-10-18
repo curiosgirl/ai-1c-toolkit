@@ -28,6 +28,9 @@
 - `skills/bsp-patterns/SKILL.md` - прикладные сценарии и архитектурные паттерны БСП.
 - `skills/worklog-tracker/SKILL.md` - ведение журнала сессий и ADR.
 
+## Субагенты
+Субагенты пакета (`onec-explorer`, `onec-reviewer`, `onec-query-auditor`, `onec-metadata-validator`, `onec-bsp-checker`, `onec-verifier`) регистрируются из `.cursor/agents/`, инструкции - в `agents/`. Когда делегировать и как собирать конвейеры - `workflow/subagents.md`.
+
 ## Ключевые запреты
 - Тернарный оператор `?(...)` запрещен.
 - Запросы внутри циклов запрещены.

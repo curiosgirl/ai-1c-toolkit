@@ -77,6 +77,7 @@ flowchart TD
 | **Зоны кода репозитория** | `rules/project-context.md`, `rules/project-context.example.md` | Разграничение типового, доработанного и стороннего кода, соглашения по тестам YAxUnit / Vanessa |
 | **Руководство по внедрению** | `docs/adoption-guide.md` | Пошаговое руководство по встраиванию пакета в существующий проект (онбординг агентом и разработчиком) |
 | **Каталог навыков** | `skills/<name>/SKILL.md` | Исполняемые сценарии (код-ревью, диагностика BSL LS, оптимизация запросов, формы, тесты, worklog) |
+| **Субагенты** | `agents/*.md`, адаптеры `.cursor/agents/`, `.claude/agents/` | Специализированные субагенты только на чтение (разведка, ревью, запросы, метаданные, БСП, независимая проверка) с общим контрактом отчета. Регламент - `workflow/subagents.md` |
 | **Процессы команды** | `workflow/*.md` | Модель ветвления Git, регламент код-ревью MR/PR, BSL Language Server, ведение заметок и ADR |
 | **Локальные настройки** | `workflow/local.example.md` | Шаблон персонального конфига разработчика (worktree для ревью, хранилище заметок, роли MCP) |
 | **Адаптеры харнессов** | `CLAUDE.md`, `.cursorrules`, `.cursor/rules/`, `.github/copilot-instructions.md` | Нативные файлы конфигурации для мгновенного подхвата правил различными агентами |
@@ -94,11 +95,14 @@ your-project-root/
 ├── CLAUDE.md
 ├── .cursorrules
 ├── .cursor/rules/bsp-edt.mdc
+├── .cursor/agents/
+├── .claude/agents/
 ├── .github/copilot-instructions.md
 ├── project-profile.md
 ├── project-profile.example.md
 ├── docs/
 │   └── adoption-guide.md
+├── agents/
 ├── rules/
 ├── skills/
 ├── workflow/

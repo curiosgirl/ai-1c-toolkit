@@ -38,6 +38,7 @@
 | Код-ревью Merge Request / Pull Request, анализ diff | `workflow/code-review.md` | `skills/bsl-code-review/SKILL.md` |
 | Диагностика BSL Language Server, линтинг и синтакс-контроль | `workflow/bsl-mcp.md` | `skills/bsl-diagnostics/SKILL.md` |
 | Спецификация задачи (SDD), сквозной журнал работы (worklog), ADR | `workflow/notes-artifacts.md`, шаблон `skills/worklog-tracker/templates/spec.md` | `skills/worklog-tracker/SKILL.md` |
+| Делегирование субагентам, конвейеры проверки, приемка их отчетов | `workflow/subagents.md`, `agents/_contract.md` | Субагенты `agents/onec-*.md` |
 
 ## Переносимые навыки агентов (Agent Skills)
 
@@ -55,6 +56,21 @@
 | `bsp-api` | `skills/bsp-api/SKILL.md` | Справочник API БСП (2624 метода, 284 модуля), проверка вызовов bsp-api.py до написания кода |
 | `bsp-patterns` | `skills/bsp-patterns/SKILL.md` | Прикладные сценарии БСП (38 тем, регламентные задания, длительные операции, печать, права) |
 | `worklog-tracker` | `skills/worklog-tracker/SKILL.md` | Создание спецификации задачи по SDD, фиксация рабочего времени (worklog) и архитектурных решений (ADR) |
+
+## Субагенты
+
+В каталоге `agents/` описаны субагенты: работают в отдельном контексте, только на чтение, возвращают отчет по общему контракту `agents/_contract.md` (ссылки `файл:строка`, Confidence, обязательный раздел «Что не проверено»). Адаптеры для автоматической загрузки - `.cursor/agents/` (Cursor) и `.claude/agents/` (Claude Code). Когда делегировать и как собирать конвейеры - `workflow/subagents.md`.
+
+| Субагент | Файл | Условия вызова |
+|---|---|---|
+| `onec-explorer` | `agents/onec-explorer.md` | Разведка перед доработкой: цепочки вызовов, места использования, подписки, перехваты в расширениях |
+| `onec-reviewer` | `agents/onec-reviewer.md` | Код-ревью diff перед коммитом и MR/PR |
+| `onec-query-auditor` | `agents/onec-query-auditor.md` | Аудит запросов в модулях или diff |
+| `onec-metadata-validator` | `agents/onec-metadata-validator.md` | Целостность `*.mdo` и `Form.form`, дубликаты UUID |
+| `onec-bsp-checker` | `agents/onec-bsp-checker.md` | Проверка вызовов БСП по справочнику `bsp-api.py` |
+| `onec-verifier` | `agents/onec-verifier.md` | Независимая перепроверка отчетов субагентов, финальный шаг конвейера |
+
+Субагенты не запускают других субагентов и не меняют файлы: конвейер собирает и правки вносит главный агент.
 
 ## Самое частое, что нарушают
 
@@ -90,8 +106,8 @@
 
 | Агент / Среда | Файл адаптера | Что настроено |
 |---|---|---|
-| **Claude Code** | `CLAUDE.md` | Подключает `@AGENTS.md`, регистрирует доступные навыки в `skills/` |
-| **Cursor** | `.cursorrules` / `.cursor/rules/bsp-edt.mdc` | Активирует стандарты для файлов `*.bsl`, `*.os`, `*.mdo`, `*.xml` |
+| **Claude Code** | `CLAUDE.md`, `.claude/agents/` | Подключает `@AGENTS.md`, регистрирует доступные навыки в `skills/` и субагентов |
+| **Cursor** | `.cursorrules` / `.cursor/rules/bsp-edt.mdc`, `.cursor/agents/` | Активирует стандарты для файлов `*.bsl`, `*.os`, `*.mdo`, `*.xml`, регистрирует субагентов |
 | **Codex / GitHub Copilot** | `.github/copilot-instructions.md` | Передает инструкции по BSL, структуре метаданных и навыкам |
 
-Пакет лежит в корне репозитория и коммитится вместе с проектом: `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, `.github/`, `project-profile.md`, `rules/`, `workflow/`, `skills/`. Личные настройки и токены (`.mcp.json`, `workflow/local.md`, `.env`) исключены через `.gitignore`.
+Пакет лежит в корне репозитория и коммитится вместе с проектом: `AGENTS.md`, `CLAUDE.md`, `.cursorrules`, `.cursor/rules/`, `.cursor/agents/`, `.claude/agents/`, `.github/`, `project-profile.md`, `agents/`, `rules/`, `workflow/`, `skills/`. Личные настройки и токены (`.mcp.json`, `workflow/local.md`, `.env`) исключены через `.gitignore`.

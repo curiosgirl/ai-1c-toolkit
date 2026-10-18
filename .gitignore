@@ -11,7 +11,9 @@ docs/notes/analyse/
 # Конфигурации и рабочие каталоги ИИ-агентов и харнессов
 .cursor/*
 !.cursor/rules/
-.claude/
+!.cursor/agents/
+.claude/*
+!.claude/agents/
 .mcp.json
 
 # IDE и среды разработки
